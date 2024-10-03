@@ -490,6 +490,7 @@ static esp_err_t GET_system_info(httpd_req_t *req)
         uint64_t end_timestamp = start_timestamp + 3600 * 1000ULL; // 1 hour after start_timestamp
         cJSON *history = get_history_data(start_timestamp, end_timestamp);
         cJSON_AddItemToObject(root, "history", history);
+        free(history);
     }
 
     free(ssid);
